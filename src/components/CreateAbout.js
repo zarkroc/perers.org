@@ -93,7 +93,8 @@ const CreateAbout = withFormik({
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'api_key': apiKey
+                    'api_key': apiKey,
+                    'x-access-token': sessionStorage.getItem("token")
                 },
                 body: JSON.stringify(data)
             })
