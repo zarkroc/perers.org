@@ -7,6 +7,8 @@ import EditAbout from './components/EditAbout.js';
 import Home from './components/Home.js';
 import Login from './components/Login.js';
 import Register from './components/Register.js';
+import Skills from './components/Skills.js';
+import WorkHistory from './components/WorkHistory.js';
 import './App.css';
 
 const App = () => {
@@ -26,6 +28,8 @@ const App = () => {
                         </section>
                         <nav>
                             <Link to="/">Home</Link>
+                            <Link to="/skills/">Skills</Link>
+                            <Link to="/workhistory/">WorkHistory</Link>
                             <Link to="/login/">Login</Link>
                         </nav>
                     </div>
@@ -36,6 +40,8 @@ const App = () => {
                 <Route exact path="/editabout" component={EditAbout} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
+                <Route exact path="/skills" component={Skills} />
+                <Route exact path="/workhistory" component={WorkHistory} />
                 <footer>
                     <p className="social">
                         <a href="https://github.com/zarkroc">
