@@ -1,0 +1,259 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100%;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0 auto;
+    padding: 0;
+    min-height: 100%;
+    font-size: 1.3em;
+    font-family: 'Advent Pro', sans-serif;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 100%;
+}
+
+#root {
+    height: 100%;
+}
+
+header,
+main,
+footer {
+    flex-shrink: 0;
+}
+
+header {
+    /* background-image: url('./img/bg.jpg'); */
+    background-color: cadetblue;
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 250px 0;
+    -webkit-transform: skew(0deg, -10deg);
+    transform: skew(0deg, -10deg);
+    margin-top: -100px;
+    font-family: 'Syncopate', sans-serif;
+}
+
+.header-content {
+    -webkit-transform: skew(0deg, 10deg);
+    transform: skew(0deg, 10deg);
+    display: flex;
+    justify-content: space-between;
+    max-width: 50%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-self: flex-start;
+    max-width: 50%;
+    margin-top: -130px;
+    font-size: 1.4em;
+}
+
+nav a {
+    margin-right: 1em;
+    padding: 1em;
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    padding: 1em;
+    background-color: #ffffff45;
+}
+
+.flash {
+    /* max-width: 50%; */
+    margin-top: -130px;
+}
+
+.flash h1 {
+    margin-top: 0;
+    font-size: 2em;
+    color: white;
+}
+
+main {
+    padding-top: 200px;
+    margin: 0 auto 2em auto;
+    max-width: 900px;
+    flex-grow: 1;
+}
+
+h2,
+h3,
+h4,
+p,
+address,
+iframe {
+    margin-bottom: 1.5em;
+}
+
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+p,
+ul {
+    line-height: 1.4em;
+}
+
+.me,
+.me-article img {
+    float: right;
+    width: 300px;
+}
+
+/* Style for the form.  */
+/* ------------------------------------------------------------------*/
+
+form {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+label {
+    margin: 5px 10px 5px 0;
+    width: 100%;
+    display: inline-block;
+}
+
+input,
+select,
+textarea {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 0.5em;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    font-size: 0.9em;
+}
+
+select:focus-within,
+option:focus {
+    cursor: pointer;
+    border: 2px solid #0788ef;
+}
+
+
+
+input,
+select,
+textarea {
+    width: 15em;
+    padding: 10px;
+    box-sizing: border-box;
+    background: none;
+    outline: none;
+    resize: none;
+    transition: all 0.3s;
+    border-radius: 20px;
+    border: 2px solid rgba(182, 206, 49, 0.77);
+}
+
+textarea {
+    width: 30em;
+    height: 30em;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    border: 2px solid #0788ef;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+    background-color: #cee0696b;
+}
+
+input[type="checkbox"] {
+    width: 10%;
+}
+
+.showPassword,
+.btnPrimary {
+    width: 11em;
+    padding: 0.5em;
+    box-sizing: border-box;
+    background: rgba(182, 206, 49, 0.7686274509803922);
+    border-radius: 20px;
+    border: 2px solid rgba(182, 206, 49, 0.7686274509803922);
+    color: rgb(59, 58, 58);
+    font-size: 0.9em;
+}
+
+.btnPrimary {
+    align-self: flex-end;
+}
+
+.showPassword:hover,
+.btnPrimary:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.is-invalid,
+.is-invalid:focus {
+    background-color: #f3aeaec4;
+    border: 2px solid #ef2a2ac4;
+}
+
+.error {
+    color: #e40000;
+}
+
+
+/* Style for footer.  */
+/* ------------------------------------------------------------------*/
+
+footer {
+    background-color: #233534;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+
+footer p {
+    color: white;
+    margin-bottom: 0;
+
+}
+
+.social {
+    align-self: center;
+}
+
+.social a {
+    color: white;
+    margin-right: 2em;
+}
