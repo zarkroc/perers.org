@@ -1,17 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import AddWorkHistory from './AddWorkHistory';
+import History from './History';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const WorkHistory = () => {
-    const [workHistory, setWorkHistory] = useState('');
+    const [history, setWorkHistory] = useState('');
     const [title, setTitle] = useState('');
+    const [showAdd, setShowAdd] = useState(false);
+    const [showWorkHistory, setShowWorkHistory] = useState(true);
     var apiURL;
 
     if (process.env.NODE_ENV === "production") {
-        apiURL = "https://api.perers.org/workhistory"
+        apiURL = "https://api.perers.org/competence"
     } else {
-        apiURL = "http://localhost:1337/workhistory"
+        apiURL = "http://localhost:1337/competence"
     }
+
+
+    const displayAdd = (() => {
+        setShowAdd(!showAdd);
+        displayWorkHistory()
+    });
+
+    const displayWorkHistory = (() => {
+        setShowWorkHistory(!showWorkHistory);
+    });
 
     useEffect(() => {
         fetch(apiURL, {
@@ -22,23 +36,23 @@ const WorkHistory = () => {
             .then(res => res.json())
             .then(function (res) {
                 if (res.data) {
-                    setWorkHistory(res.data.workHistory);
+                    setWorkHistory(res.data.history);
                     setTitle(res.data.title);
                 }
             });
     }, [apiURL]);
 
-    if (workHistory) {
-        console.log('====================================');
-        console.log(workHistory);
-        console.log('====================================');
+    if (history) {
+
         return (
             <main>
             <h2>{title}</h2>
-            <article className="me-article"></article>
             <article className="me-article">
-                <p>competence: {workHistory.name}</p>
-                <p>Level: {workHistory.level}</p>
+            {showAdd ? <AddWorkHistory /> : null}
+            {showWorkHistory ? <History history={history}/> : null}
+                {sessionStorage.getItem("token") ? <div>
+                    <button className="btnPrimary" onClick={displayAdd}>Add Work</button>
+                </div> : null}
             </article>
             </main>
         );
