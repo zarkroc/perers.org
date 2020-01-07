@@ -49,8 +49,8 @@ const AddSkill = withFormik({
     },
 
     validationSchema: yup.object().shape({
-        name: yup.string().required("Antal är obligatoriskt"),
-        level: yup.string().required("Antal är obligatoriskt"),
+        name: yup.string().required("Namn är obligatoriskt"),
+        level: yup.string().required("Nivå är obligatoriskt"),
     }),
 
 
