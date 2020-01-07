@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import AddSkill from './AddSkills';
+import Skill from './Skill';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const Skills = () => {
     const [skills, setSkills] = useState('');
     const [title, setTitle] = useState('');
+    const [showAdd, setShowAdd] = useState(false);
+    const [showSkills, setShowSkills] = useState(true);
     var apiURL;
 
     if (process.env.NODE_ENV === "production") {
@@ -12,6 +16,16 @@ const Skills = () => {
     } else {
         apiURL = "http://localhost:1337/competence"
     }
+
+
+    const displayAdd = (() => {
+        setShowAdd(!showAdd);
+        displaySkills()
+    });
+
+    const displaySkills = (() => {
+        setShowSkills(!showSkills);
+    });
 
     useEffect(() => {
         fetch(apiURL, {
@@ -29,16 +43,16 @@ const Skills = () => {
     }, [apiURL]);
 
     if (skills) {
-        console.log('====================================');
-        console.log(skills);
-        console.log('====================================');
+
         return (
             <main>
             <h2>{title}</h2>
-            <article className="me-article"></article>
             <article className="me-article">
-                <p>competence: {skills.name}</p>
-                <p>Level: {skills.level}</p>
+            {showAdd ? <AddSkill /> : null}
+            {showSkills ? <Skill skill={skills}/> : null}
+                {sessionStorage.getItem("token") ? <div>
+                    <button className="btnPrimary" onClick={displayAdd}>Add skill</button>
+                </div> : null}
             </article>
             </main>
         );
