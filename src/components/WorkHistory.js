@@ -43,24 +43,31 @@ const WorkHistory = () => {
     }, [apiURL]);
 
     if (history) {
+        console.log('====================================');
+        console.log("asdfa");
+        console.log('====================================');
 
         return (
             <main>
-            <h2>{title}</h2>
-            <article className="me-article">
-            {showAdd ? <AddWorkHistory /> : null}
-            {showWorkHistory ? <History history={history}/> : null}
-                {sessionStorage.getItem("token") ? <div>
-                    <button className="btnPrimary" onClick={displayAdd}>Add Work</button>
-                </div> : null}
-            </article>
+                <h2>{title}</h2>
+                <article className="me-article">
+                    {showAdd ? <AddWorkHistory /> : null}
+                    {showWorkHistory ? <History history={history} /> : null}
+                    {sessionStorage.getItem("token") ? <div>
+                        <button className="btnPrimary" onClick={displayAdd}>Add Work</button>
+                    </div> : null}
+                </article>
             </main>
         );
     }
     return (
-        <article className="me-article">
-            <p>No information found</p>
-        </article>
+        <main>
+            <article className="me-article">
+                <p>No information found</p>
+                {showAdd ? <AddWorkHistory /> : null}
+                <button className="btnPrimary" onClick={displayAdd}>Add Work</button>
+            </article>
+        </main>
     );
 
 
