@@ -80,7 +80,11 @@ const AddSkill = withFormik({
             })
                 .then(res => res.json())
                 .then(function (res) {
-                    console.log(res)
+                    if(res.errors) {
+                        setErrors({
+                            apifault: "Could not save +" + res.errors.details
+                        })
+                    }
                 });
         }, 1000);
     }
