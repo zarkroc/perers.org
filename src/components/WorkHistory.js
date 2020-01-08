@@ -43,10 +43,6 @@ const WorkHistory = () => {
     }, [apiURL]);
 
     if (history) {
-        console.log('====================================');
-        console.log("asdfa");
-        console.log('====================================');
-
         return (
             <main>
                 <h2>{title}</h2>
