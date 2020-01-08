@@ -60,6 +60,7 @@ const Skills = () => {
     return (
         <article className="me-article">
             <p>No information found</p>
+            <button className="btnPrimary" onClick={displayAdd}>Add skill</button>
         </article>
     );
 
