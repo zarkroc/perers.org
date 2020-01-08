@@ -19,48 +19,43 @@ const MyFormik = ({
             <h2>Add skill</h2>
             <Form>
                 <label htmlFor="company">Namn:<br />
-
-                    <Field id="company" type="text" company="company"
+                    <Field id="company" type="text" name="company"
                         className={errors.company && touched.company ? ' is-invalid' : ''}
                         value={values.company} />
-                    <ErrorMessage component="span" className="error" company="company" />
+                    <ErrorMessage component="span" className="error" name="company" />
                 </label><br />
                 <label htmlFor="desc">desc:<br />
-
-                    <Field id="desc" type="text" company="desc"
+                    <Field id="desc" type="text" name="desc"
                         className={errors.desc && touched.desc ? ' is-invalid' : ''}
                         value={values.desc} />
-                    <ErrorMessage component="span" className="error" company="desc" />
+                    <ErrorMessage component="span" className="error" name="desc" />
                 </label><br />
                 <label htmlFor="start">start:<br />
-
-                    <Field id="start" type="text" company="start"
+                    <Field id="start" type="text" name="start"
                         className={errors.start && touched.start ? ' is-invalid' : ''}
                         value={values.start} />
-                    <ErrorMessage component="span" className="error" company="start" />
+                    <ErrorMessage component="span" className="error" name="start" />
                 </label><br />
                 <label htmlFor="stop">stop:<br />
-
-                    <Field id="stop" type="text" company="stop"
+                    <Field id="stop" type="text" name="stop"
                         className={errors.stop && touched.stop ? ' is-invalid' : ''}
                         value={values.stop} />
-                    <ErrorMessage component="span" className="error" company="stop" />
+                    <ErrorMessage component="span" className="error" name="stop" />
                 </label><br />
                 <label htmlFor="role">role:<br />
-
-                    <Field id="role" type="text" company="role"
+                    <Field id="role" type="text" name="role"
                         className={errors.role && touched.role ? ' is-invalid' : ''}
                         value={values.role} />
-                    <ErrorMessage component="span" className="error" company="role" />
+                    <ErrorMessage component="span" className="error" name="role" />
                 </label><br />
                 <button className="btnPrimary">spara</button>
             </Form>
-            {errors.apifault ? <p>{errors.apifault}</p> : null }
+            {errors.apifault ? <p>{errors.apifault}</p> : null}
         </section>
     )
 
 
-const AddSkill = withFormik({
+const AddWorkHistory = withFormik({
     enableReinitialize: true,
     mapPropsToValues({ company, desc, role, start, stop }) {
         return {
@@ -110,11 +105,15 @@ const AddSkill = withFormik({
             })
                 .then(res => res.json())
                 .then(function (res) {
-                    console.log(res)
+                    if(res.errors) {
+                        setErrors({
+                            apifault: "Could not save +" + res.errors.details
+                        })
+                    }
                 });
         }, 1000);
     }
 })(MyFormik);
 
-export default AddSkill;
+export default AddWorkHistory;
 
