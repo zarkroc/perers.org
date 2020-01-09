@@ -16,7 +16,7 @@ const MyFormik = ({
     touched,
 }) => (
         <section>
-            <h2>Add skill</h2>
+            <h2>Add Work History</h2>
             <Form>
                 <label htmlFor="company">Namn:<br />
                     <Field id="company" type="text" name="company"
@@ -89,9 +89,9 @@ const AddWorkHistory = withFormik({
             var apiURL = "";
 
             if (process.env.NODE_ENV === "production") {
-                apiURL = "https://api.perers.org/competence"
+                apiURL = "https://api.perers.org/workhistory"
             } else {
-                apiURL = "http://localhost:1337/competence"
+                apiURL = "http://localhost:1337/workhistory"
             }
             fetch(apiURL, {
                 method: 'POST',
