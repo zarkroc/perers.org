@@ -102,7 +102,7 @@ const CreateAbout = withFormik({
                 .then(function (res) {
                     if(res.errors) {
                         setErrors({
-                            apifault: "Could not save +" + res.errors.details
+                            apifault: "Could not save reason: " + res.errors.detail
                         })
                     }
                 });

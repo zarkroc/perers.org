@@ -78,8 +78,7 @@ const AddWorkHistory = withFormik({
 
     handleSubmit: (values, { setSubmitting, resetForm, setStatus, setErrors, props }) => {
         setTimeout(() => {
-            resetForm();
-            setSubmitting(false);
+
             var data = {
                 company: values.company,
                 desc: values.desc,
@@ -105,10 +104,13 @@ const AddWorkHistory = withFormik({
             })
                 .then(res => res.json())
                 .then(function (res) {
-                    if(res.errors) {
+                    if (res.errors) {
                         setErrors({
-                            apifault: "Could not save +" + res.errors.details
+                            apifault: "Could not save reason: " + res.errors.detail
                         })
+                    } else {
+                        resetForm();
+                        setSubmitting(false);
                     }
                 });
         }, 1000);
