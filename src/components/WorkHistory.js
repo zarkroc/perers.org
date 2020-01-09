@@ -12,9 +12,9 @@ const WorkHistory = () => {
     var apiURL;
 
     if (process.env.NODE_ENV === "production") {
-        apiURL = "https://api.perers.org/competence"
+        apiURL = "https://api.perers.org/workhistory"
     } else {
-        apiURL = "http://localhost:1337/competence"
+        apiURL = "http://localhost:1337/workhistory"
     }
 
 
@@ -36,7 +36,7 @@ const WorkHistory = () => {
             .then(res => res.json())
             .then(function (res) {
                 if (res.data) {
-                    setWorkHistory(res.data.history);
+                    setWorkHistory(res.data.workPlaces);
                     setTitle(res.data.title);
                 }
             });
@@ -48,7 +48,10 @@ const WorkHistory = () => {
                 <h2>{title}</h2>
                 <article className="me-article">
                     {showAdd ? <AddWorkHistory /> : null}
-                    {showWorkHistory ? <History history={history} /> : null}
+                    {/* {showWorkHistory ? <History history={history} callBack={displayAdd} /> : null} */}
+                    { showWorkHistory ? history.map((element) => {
+                        return <History key={element._id} history={element} />
+                    }) : null }
                     {sessionStorage.getItem("token") ? <div>
                         <button className="btnPrimary" onClick={displayAdd}>Add Work</button>
                     </div> : null}
@@ -61,7 +64,9 @@ const WorkHistory = () => {
             <article className="me-article">
                 <p>No information found</p>
                 {showAdd ? <AddWorkHistory /> : null}
-                <button className="btnPrimary" onClick={displayAdd}>Add Work</button>
+                {sessionStorage.getItem("token") ? <div>
+                        <button className="btnPrimary" onClick={displayAdd}>Add Work</button>
+                    </div> : null}
             </article>
         </main>
     );
