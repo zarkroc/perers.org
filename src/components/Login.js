@@ -55,11 +55,14 @@ class MyFormik extends Component {
                 <Form>
                     <label htmlFor="emailInput">Email:<br />
 
-                        <Field id="emailInput" type="email" name="email" className={this.props.errors.email && this.props.touched.email ? ' is-invalid' : ''} value={this.props.values.email} />
+                        <Field id="emailInput" type="email" name="email" className={this.props.errors.email &&
+                            this.props.touched.email ? ' is-invalid' : ''} value={this.props.values.email} />
                         <ErrorMessage component="span" className="error" name="email" />
                     </label><br />
                     <label htmlFor="passwordInput">Lösenord:<br />
-                        <Field id="passwordInput" type={this.state.showPassword ? "text" : "password"} className={this.props.errors.password && this.props.touched.password ? ' is-invalid' : ''} name="password" value={this.props.values.password} />
+                        <Field id="passwordInput" type={this.state.showPassword ? "text" : "password"}
+                            className={this.props.errors.password && this.props.touched.password ? ' is-invalid' : ''}
+                            name="password" value={this.props.values.password} />
                         <button type="button" className="showPassword" onClick={this.toggleShow}>Visa lösenord</button>
                         <ErrorMessage component="span" className="error" name="password" />
                     </label><br />
@@ -125,7 +128,7 @@ const Login = withFormik({
                             redirectTo: true
                         });
                     } else {
-                        setErrors({password: "wrong password"})
+                        setErrors({ password: "wrong password" })
                         console.log("wrong password");
                     }
                 }));

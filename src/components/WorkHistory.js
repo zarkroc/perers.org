@@ -48,10 +48,9 @@ const WorkHistory = () => {
                 <h2>{title}</h2>
                 <article className="me-article">
                     {showAdd ? <AddWorkHistory /> : null}
-                    {/* {showWorkHistory ? <History history={history} callBack={displayAdd} /> : null} */}
-                    { showWorkHistory ? history.map((element) => {
-                        return <History key={element._id} history={element} />
-                    }) : null }
+                    {showWorkHistory ? history.map((element) => {
+                        return <History key={element._id} history={element} callBack={displayAdd} />
+                    }) : null}
                     {sessionStorage.getItem("token") ? <div>
                         <button className="btnPrimary" onClick={displayAdd}>Add Work</button>
                     </div> : null}
@@ -65,8 +64,8 @@ const WorkHistory = () => {
                 <p>No information found</p>
                 {showAdd ? <AddWorkHistory /> : null}
                 {sessionStorage.getItem("token") ? <div>
-                        <button className="btnPrimary" onClick={displayAdd}>Add Work</button>
-                    </div> : null}
+                    <button className="btnPrimary" onClick={displayAdd}>Add Work</button>
+                </div> : null}
             </article>
         </main>
     );

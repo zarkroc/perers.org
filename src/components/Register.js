@@ -34,11 +34,14 @@ class MyFormik extends Component {
                 <h2>Registreringsformulär</h2>
                 <Form>
                     <label htmlFor="emailInput">Email:<br />
-                        <Field id="emailInput" type="email" name="email" className={this.props.errors.email && this.props.touched.email ? ' is-invalid' : ''} value={this.props.values.email} />
+                        <Field id="emailInput" type="email" name="email" className={this.props.errors.email
+                            && this.props.touched.email ? ' is-invalid' : ''} value={this.props.values.email} />
                         <ErrorMessage component="span" className="error" name="email" />
                     </label><br />
                     <label htmlFor="passwordInput">Lösenord:<br />
-                        <Field id="passwordInput" type={this.state.showPassword ? "text" : "password"} className={this.props.errors.password && this.props.touched.password ? ' is-invalid' : ''} name="password" value={this.props.values.password} />
+                        <Field id="passwordInput" type={this.state.showPassword ? "text" : "password"}
+                            className={this.props.errors.password && this.props.touched.password ? ' is-invalid' : ''}
+                            name="password" value={this.props.values.password} />
                         <button type="button" className="showPassword" onClick={this.toggleShow}>Visa lösenord</button>
                         <ErrorMessage component="span" className="error" name="password" />
                     </label><br />
@@ -89,15 +92,15 @@ const Register = withFormik({
                 },
                 body: JSON.stringify(data)
             })
-            .then(res => res.json())
-            .then(function (res) {
-                sessionStorage.setItem("token", res.token);
-                sessionStorage.setItem("userId", res.user);
-                sessionStorage.setItem("isLoggedIn", true);
-                setStatus({
-                    redirectTo: true
+                .then(res => res.json())
+                .then(function (res) {
+                    sessionStorage.setItem("token", res.token);
+                    sessionStorage.setItem("userId", res.user);
+                    sessionStorage.setItem("isLoggedIn", true);
+                    setStatus({
+                        redirectTo: true
+                    });
                 });
-            });
         }, 1000);
     }
 })(MyFormik);

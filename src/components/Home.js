@@ -56,15 +56,18 @@ const Home = () => {
         <main>
             <h2>{title}</h2>
             <article className="me-article">
-                {showEdit ? <EditAbout name={about.name} homeTown={about.location} desc={about.description} interest={about.interest} callBack={displayEdit} /> : null }
+                {showEdit ? <EditAbout name={about.name} homeTown={about.location}
+                    desc={about.description} interest={about.interest} callBack={displayEdit} /> : null}
                 {showCreate ? <CreateAbout /> : null}
                 {showAbout ? <About /> : null}
                 {sessionStorage.getItem("token") ? <div>
                     <button className="btnPrimary" onClick={displayCreate}>Create</button>
-                    { about ? <button className="btnPrimary" onClick={displayEdit}>Edit</button>: null}
+                    {about ? <button className="btnPrimary" onClick={displayEdit}>Edit</button> : null}
                 </div> : null}
             </article>
-            {sessionStorage.getItem("token") ? <Link to="/login"><button className="btnPrimary" type="button">Logout</button></Link> : <Link to="/login"><button className="btnPrimary" type="button">Login</button></Link>}
+            {sessionStorage.getItem("token") ? <Link to="/login"><button className="btnPrimary"
+                type="button">Logout</button></Link> : <Link to="/login"><button className="btnPrimary"
+                    type="button">Login</button></Link>}
 
         </main>
     );

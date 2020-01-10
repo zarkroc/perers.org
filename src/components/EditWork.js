@@ -88,9 +88,7 @@ const EditWork = withFormik({
                 stop: values.stop,
                 role: values.role
             };
-            console.log('====================================');
-            console.log(data);
-            console.log('====================================');
+
             var apiURL = "";
 
             if (process.env.NODE_ENV === "production") {
