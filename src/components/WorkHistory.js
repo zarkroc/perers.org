@@ -47,9 +47,9 @@ const WorkHistory = () => {
             <main>
                 <h2>{title}</h2>
                 <article className="me-article">
-                    {showAdd ? <AddWorkHistory /> : null}
+                    {showAdd ? <AddWorkHistory callBack={displayAdd} /> : null}
                     {showWorkHistory ? history.map((element) => {
-                        return <History key={element._id} history={element} callBack={displayAdd} />
+                        return <History key={element._id} history={element} />
                     }) : null}
                     {sessionStorage.getItem("token") ? <div>
                         <button className="btnPrimary" onClick={displayAdd}>Add Work</button>

@@ -84,6 +84,10 @@ const AddSkill = withFormik({
                         setErrors({
                             apifault: "Could not save reason: " + res.errors.detail
                         })
+                    } else {
+                        resetForm();
+                        setSubmitting(false);
+                        props.callBack();
                     }
                 });
         }, 1000);

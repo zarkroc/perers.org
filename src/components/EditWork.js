@@ -114,6 +114,7 @@ const EditWork = withFormik({
                     } else {
                         resetForm();
                         setSubmitting(false);
+                        props.callBack();
                     }
                 });
         }, 1000);

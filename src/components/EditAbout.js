@@ -47,7 +47,7 @@ const MyFormik = ({
                 </label><br />
                 <button className="btnPrimary">spara</button>
             </Form>
-            {errors.apifault ? <p>{errors.apifault}</p> : null }
+            {errors.apifault ? <p>{errors.apifault}</p> : null}
         </section>
     );
 
@@ -73,8 +73,6 @@ const EditAbout = withFormik({
 
     handleSubmit: (values, { setSubmitting, resetForm, setStatus, setErrors, props }) => {
         setTimeout(() => {
-            resetForm();
-            setSubmitting(false);
             var data = {
                 name: values.name,
                 desc: values.desc,
@@ -99,13 +97,16 @@ const EditAbout = withFormik({
             })
                 .then(res => res.json())
                 .then(function (res) {
-                    if(res.errors) {
+                    if (res.errors) {
                         setErrors({
                             apifault: "Could not save reason: " + res.errors.detail
                         })
+                    } else {
+                        resetForm();
+                        setSubmitting(false);
+                        props.callBack();
                     }
                 });
-                props.callBack(data)
         }, 1000);
     }
 })(MyFormik);

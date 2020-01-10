@@ -48,7 +48,7 @@ const Skills = () => {
             <main>
             <h2>{title}</h2>
             <article className="me-article">
-            {showAdd ? <AddSkill /> : null}
+            {showAdd ? <AddSkill callback={displayAdd} /> : null}
             {showSkills ? <Skill skill={skills}/> : null}
                 {sessionStorage.getItem("token") ? <div>
                     <button className="btnPrimary" onClick={displayAdd}>Add skill</button>

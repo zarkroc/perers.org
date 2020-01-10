@@ -58,7 +58,7 @@ const Home = () => {
             <article className="me-article">
                 {showEdit ? <EditAbout name={about.name} homeTown={about.location}
                     desc={about.description} interest={about.interest} callBack={displayEdit} /> : null}
-                {showCreate ? <CreateAbout /> : null}
+                {showCreate ? <CreateAbout callBack={displayCreate} /> : null}
                 {showAbout ? <About /> : null}
                 {sessionStorage.getItem("token") ? <div>
                     <button className="btnPrimary" onClick={displayCreate}>Create</button>

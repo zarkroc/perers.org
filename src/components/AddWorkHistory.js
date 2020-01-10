@@ -111,6 +111,7 @@ const AddWorkHistory = withFormik({
                     } else {
                         resetForm();
                         setSubmitting(false);
+                        props.callback();
                     }
                 });
         }, 1000);
