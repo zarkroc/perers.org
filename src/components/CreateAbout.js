@@ -25,12 +25,12 @@ const MyFormik = ({
                         value={values.name} />
                     <ErrorMessage component="span" className="error" name="name" />
                 </label><br />
-                <label htmlFor="desc">Description:<br />
+                <label htmlFor="description">Description:<br />
 
-                    <Field id="desc" type="text" name="desc"
-                        className={errors.desc && touched.desc ? ' is-invalid' : ''}
-                        value={values.desc} />
-                    <ErrorMessage component="span" className="error" name="desc" />
+                    <Field id="description" type="text" name="description"
+                        className={errors.description && touched.description ? ' is-invalid' : ''}
+                        value={values.description} />
+                    <ErrorMessage component="span" className="error" name="description" />
                 </label><br />
                 <label htmlFor="homeTown">homeTown:<br />
 
@@ -48,17 +48,17 @@ const MyFormik = ({
                 </label><br />
                 <button className="btnPrimary">spara</button>
             </Form>
-            {errors.apifault ? <p>{errors.apifault}</p> : null }
+            {errors.apifault ? <p>{errors.apifault}</p> : null}
         </section>
     )
 
 
 const CreateAbout = withFormik({
     enableReinitialize: true,
-    mapPropsToValues({ name, homeTown, desc, interest }) {
+    mapPropsToValues({ name, homeTown, description, interest }) {
         return {
             name: name || "",
-            desc: desc || "",
+            description: description || "",
             homeTown: homeTown || "",
             interest: interest || ""
         };
@@ -66,7 +66,7 @@ const CreateAbout = withFormik({
 
     validationSchema: yup.object().shape({
         name: yup.string().required("Antal är obligatoriskt"),
-        desc: yup.string().required("Antal är obligatoriskt"),
+        description: yup.string().required("Antal är obligatoriskt"),
         homeTown: yup.string().required("Antal är obligatoriskt"),
         interest: yup.string().required("Antal är obligatoriskt"),
     }),
@@ -78,7 +78,7 @@ const CreateAbout = withFormik({
             setSubmitting(false);
             var data = {
                 name: values.name,
-                desc: values.desc,
+                description: values.description,
                 homeTown: values.homeTown,
                 interest: values.interest
             };
@@ -100,7 +100,7 @@ const CreateAbout = withFormik({
             })
                 .then(res => res.json())
                 .then(function (res) {
-                    if(res.errors) {
+                    if (res.errors) {
                         setErrors({
                             apifault: "Could not save reason: " + res.errors.detail
                         })
